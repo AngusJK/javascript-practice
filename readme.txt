@@ -1,0 +1,1 @@
+this repository is just a place to store project ideas, gists, katas, etc. and practice writing code with javascript
