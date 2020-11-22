@@ -32,11 +32,27 @@ const contacts = [
 ];
 
 const findFriend = function(list, person, detail) {
+  let notFound = "Not found";
+  let result = {};
+  let firstFriend = "";
   for (let x in list) {
-    if (list[x].name = person) {
-      console.log(list[x]);
+    if (list[x]['name'] === person) {
+      firstFriend = list[x]['friends'][0];
+      result.name = firstFriend;
+    } else {
+      return notFound;
+    }
+  }
+  for (let x in list) {
+    if (list[x]['name'] === firstFriend) {
+      result[`${detail}`] = list[x][`${detail}`];
+      console.log(result);
+    } else {
+      return notFound;
     }
   }
 }
 
-findFriend(contacts, "Laurel", "email"); // => "Hardy", "hardy@hardyharhar.com"
+findFriend(contacts, "Costello", "birthday"); // => "Hardy", "hardy@hardyharhar.com"
+
+// node findFriend.js
