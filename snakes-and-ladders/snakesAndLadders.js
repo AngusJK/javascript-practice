@@ -14,18 +14,19 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
   } else if (answer === "y") {
     rollDie();
     //console.log(squareImOn);
-    rl.question("Press r then enter to roll again\n", (answer) => {
+    
+    const keepRollin = function() {
+      rl.question("Press r then enter to roll again\n", (answer) => {
       if (answer === "r") {
         rollDie();
-        rl.question("Press r then enter to roll again\n", (answer) => {
-          rollDie();
-          rl.close();
-        })
+        keepRollin();
       } else {
         console.log("You didn't press r. Game over.");
         rl.close();
-      }
-    });
+        }
+      });
+    }
+    keepRollin();
   } else {
     console.log("That's not a valid answer. No soup for you!");
     rl.close();
