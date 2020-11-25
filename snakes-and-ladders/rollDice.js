@@ -1,13 +1,21 @@
-let squareImOn = 1;
-const rollDie = function() {
+let squareImOn = 0;
+const rollDie = function(callback) {
   result = Math.floor(Math.random() * 6) + 1;
-  console.log(`You've rolled a ${result}.`);
   squareImOn += result;
-  if (squareImOn === 5) {
-    squareImOn -= 3;
-    console.log(`Oh crap, you landed on a snake! Back to square ${squareImOn}.`);
+  if (squareImOn === 1) {
+    squareImOn += 37;
+    console.log(`Roll: ${result}. You've landed on a ladder! Advance to 37.`);
+  } else if (squareImOn === 4) {
+    squareImOn += 10;
+    console.log(`Roll: ${result}. You've landed on a ladder! advance to 14.`);
+  } else if (squareImOn === 8) {
+    squareImOn += 22;
+    console.log(`Roll: ${result}. You've landed on a ladder! Advance to 30.`);
+  } else if (squareImOn === 21) {
+    squareImOn += 21;
+    console.log(`Roll: ${result}. You've landed on ladder! Advance to 42.`)
   } else {
-  console.log(`You're now on square ${squareImOn}.`);
+  console.log(`You rolled a ${result}; you're now on square ${squareImOn}.`);
   };
 };
 
