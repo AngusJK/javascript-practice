@@ -13,7 +13,19 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
     rl.close();
   } else if (answer === "y") {
     rollDie();
-    rl.close();
+    //console.log(squareImOn);
+    rl.question("Press r then enter to roll again\n", (answer) => {
+      if (answer === "r") {
+        rollDie();
+        rl.question("Press r then enter to roll again\n", (answer) => {
+          rollDie();
+          rl.close();
+        })
+      } else {
+        console.log("You didn't press r. Game over.");
+        rl.close();
+      }
+    });
   } else {
     console.log("That's not a valid answer. No soup for you!");
     rl.close();
