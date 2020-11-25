@@ -1,7 +1,26 @@
 const rollDie = require('./rollDice');
 const squareImOn = require('./rollDice');
+const readline = require('readline');
+const { stdout } = require('process');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
+rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or n, then press enter.)\n", (answer) => {
+  if (answer === "n") {
+    console.log("Okay bye.");
+    rl.close();
+  } else if (answer === "y") {
+    rollDie();
+    rl.close();
+  } else {
+    console.log("That's not a valid answer. No soup for you!");
+    rl.close();
+  }
+});
+/*
 rollDie();
 console.log(squareImOn);
-
+*/
 // node snakesAndLadders.js
