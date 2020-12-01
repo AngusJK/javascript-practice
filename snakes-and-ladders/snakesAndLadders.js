@@ -35,17 +35,49 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
         if (answer === "r") {
           let roll = rollDie();
           squareImOn += roll;
-          if (squareImOn < 40) {
+          if (squareImOn < 100) {
             if (squareImOn === 1) {
               squareImOn += 36;
               ladderSquare(roll, squareImOn);
             } else if (squareImOn === 4) {
               squareImOn += 10;
+              ladderSquare(roll, squareImOn);
             } else if (squareImOn === 8) {
-              squareImOn -= 6;
-              snakeSquare(roll, squareImOn);
+              squareImOn += 22;
+              ladderSquare(roll, squareImOn);
             } else if (squareImOn === 21) {
               squareImOn += 21;
+              ladderSquare(roll, squareImOn);
+            } else if (squareImOn === 28) {
+              squareImOn += 48;
+              ladderSquare(roll, squareImOn);
+            } else if (squareImOn === 32) {
+              squareImOn -= 22;
+              snakeSquare(roll. squareImOn);
+            } else if (squareImOn === 36) {
+              squareImOn -= 30;
+              snakeSquare(roll, squareImOn);
+            } else if (squareImOn === 48) {
+              squareImOn -= 22;
+              snakeSquare(roll, squareImOn);
+            } else if (squareImOn === 50) {
+              squareImOn += 17;
+              ladderSquare(roll, squareImOn);
+            } else if (squareImOn === 62) {
+              squareImOn -= 44;
+              snakeSquare(roll, squareImOn);
+            } else if (squareImOn === 71) {
+              squareImOn += 21;
+              ladderSquare(roll, squareImOn);
+            } else if (squareImOn === 80) {
+              squareImOn += 19;
+              ladderSquare(roll, squareImOn);
+            } else if (squareImOn === 95) {
+              squareImOn -= 39;
+              snakeSquare(roll, squareImOn);
+            } else if (squareImOn === 97) {
+              squareImOn -= 19;
+              snakeSquare(roll, squareImOn);
             } else {
               console.log(`You rolled a ${roll}. You're now on square ${squareImOn}.`);
             }
