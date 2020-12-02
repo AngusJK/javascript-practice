@@ -12,74 +12,60 @@ const ladderSquare = function(x, y, z) {
 
 const keepRollin = function(input) {
     //if (answer === "r") {
-      let squareImOn = input;
+      let startingSquare = input;
       let roll = rollDie();
-      squareImOn += roll;
+      let landedOn = startingSquare + roll;
+      let newSquare = startingSquare + roll;
       let responsePhrase  = "";
-      if (squareImOn < 100) {
-        if (squareImOn === 1) {
-          let moveSquares = 36;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 4) {
-          let moveSquares = 10;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 8) {
-          let moveSquares = 22;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 21) {
-          let moveSquares = 21;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 28) {
-          let moveSquares = 48;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 32) {
-          let moveSquares = 22;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else if (squareImOn === 36) {
-          let moveSquares = 30;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else if (squareImOn === 48) {
-          let moveSquares = 22;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else if (squareImOn === 50) {
-          let moveSquares = 17;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 62) {
-          let moveSquares = 44;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else if (squareImOn === 71) {
-          let moveSquares = 21;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 80) {
-          let moveSquares = 19;
-          squareImOn += moveSquares;
-          responsePhrase = ladderSquare(roll, moveSquares, squareImOn);
-        } else if (squareImOn === 95) {
-          let moveSquares = 39;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else if (squareImOn === 97) {
-          let moveSquares = 19;
-          squareImOn -= moveSquares;
-          responsePhrase = snakeSquare(roll. squareImOn);
-        } else {
-          responsePhrase = `You rolled a ${roll}. You're now on square ${squareImOn}.`;
-        }
-        let updatedInfo = [responsePhrase, squareImOn];
-        return updatedInfo;
+
+      if (landedOn === 1) {
+        newSquare = landedOn + 36;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 4) {
+        newSquare = landedOn + 10;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 8) {
+        newSquare = landedOn + 22;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 21) {
+        newSquare = landedOn + 21;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 28) {
+        newSquare = landedOn + 48;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 32) {
+        newSquare = landedOn - 22;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 36) {
+        newSquare = landedOn - 30;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 48) {
+        newSquare = landedOn - 22;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 50) {
+        newSquare = landedOn + 17;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 62) {
+        newSquare = landedOn + 44;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 71) {
+        newSquare = landedOn + 21;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 80) {
+        newSquare = landedOn + 19;
+        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 95) {
+        newSquare = landedOn - 39;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 97) {
+        newSquare = landedOn - 19;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else {
+        responsePhrase = `You rolled a ${roll}. You're now on square ${newSquare}.`;
       }
-    //}
+
+      let updatedInfo = [responsePhrase, newSquare];
+      return updatedInfo;
   } 
 
   module.exports = keepRollin;
