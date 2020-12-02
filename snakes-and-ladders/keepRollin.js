@@ -1,4 +1,4 @@
-const rollDie = require('./rollDice');
+const rollDice = require('./rollDice');
 
 const snakeSquare = function(x, y, z) {
   return `🐍 Oh, rotten luck. You rolled a ${x} and landed on square ${y}, which is a snake. You're going back to square ${z}.`;
@@ -10,7 +10,7 @@ const ladderSquare = function(x, y, z) {
 
 const keepRollin = function(input) {
   let startingSquare = input;
-  let roll = rollDie();
+  let roll = rollDice();
   let landedOn = startingSquare + roll;
   let newSquare = startingSquare + roll;
   let responsePhrase  = "";
