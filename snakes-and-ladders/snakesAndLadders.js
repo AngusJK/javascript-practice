@@ -1,5 +1,6 @@
 const rollDie = require('./rollDice');
 const readline = require('readline');
+const keepRollin = require('./keepRollin');
 // const { stdout } = require('process');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -24,15 +25,24 @@ let ladderSquare = function(x, y) {
 }
 
 rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or n, then press enter.)\n", (answer) => {
-  let squareImOn = 0;
+  
   if (answer === "n") {
     console.log("Okay bye.");
     rl.close();
   } 
   else if (answer === "y") {
-    const keepRollin = function() {
-      rl.question("Press 'r' then 'enter' to roll\n", (answer) => {
-        if (answer === "r") {
+   // const keepRollin = function() {
+    let squareImOn = 0;
+      const askToRoll = function() {
+        rl.question("Press 'r' then 'enter' to roll\n", (answer) => {
+          if (answer === "r") {
+            let response = keepRollin(squareImOn);
+            console.log(response[0]);
+            squareImOn += response[1];
+            if (squareImOn <= 100) {
+              askToRoll();
+            }
+          /*
           let roll = rollDie();
           squareImOn += roll;
           if (squareImOn < 100) {
@@ -82,17 +92,21 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
               console.log(`You rolled a ${roll}. You're now on square ${squareImOn}.`);
             }
             keepRollin();
-          } else {
+          } 
+          
+          else {
             console.log(`You rolled a ${roll}. You win!`);
             rl.close();
-          }
+          }*/
         } else {
           console.log("You didn't press r. Game over.");
           rl.close();
-        }
+        };
       });
-    };
-    keepRollin();
+      };
+      askToRoll();  
+    //};
+    //keepRollin();
   } 
   else {
     console.log("That's not a valid answer. No soup for you!");
