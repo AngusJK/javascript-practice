@@ -21,8 +21,10 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
           let response = keepRollin(squareImOn);
           console.log(response[0]);
           squareImOn = response[1];
-          if (squareImOn <= 100) {
+          if (squareImOn < 100) {
             askToRoll();
+          } else if (squareImOn === 100) {
+            rl.close();
           }
         } else {
           console.log("You didn't press r. Game over.");
