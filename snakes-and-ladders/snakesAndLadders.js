@@ -1,13 +1,9 @@
-const rollDie = require('./rollDice');
 const readline = require('readline');
 const keepRollin = require('./keepRollin');
-// const { stdout } = require('process');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
-
 
 rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or n, then press enter.)\n", (answer) => {
   if (answer === "n") {
@@ -29,20 +25,13 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
         } else {
           console.log("You didn't press r. Game over.");
           rl.close();
-        };
+        }
       });
     };
-    askToRoll();  
+    askToRoll();
   } else {
     console.log("That's not a valid answer. No soup for you!");
     rl.close();
   }
 });
 
-
-
-
-
-
-
-// node snakesAndLadders.js
