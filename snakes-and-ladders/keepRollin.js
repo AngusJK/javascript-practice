@@ -1,11 +1,11 @@
 const rollDie = require('./rollDice');
 
 const snakeSquare = function(x, y, z) {
-  return `Oh, rotten luck. You rolled a ${x} and landed on square ${y}, which is a snake. You're going back to square ${z}.`;
+  return `🐍 Oh, rotten luck. You rolled a ${x} and landed on square ${y}, which is a snake. You're going back to square ${z}.`;
 }
 
 const ladderSquare = function(x, y, z) {
-  return `You rolled a ${x} and landed on square ${y}, which is a ladder! Congratulations! You're moving up to square ${z}!`;
+  return `🪜 You rolled a ${x} and landed on square ${y}, which is a ladder! Congratulations! You're moving up to square ${z}!`;
 }
 
 
@@ -19,7 +19,7 @@ const keepRollin = function(input) {
       let responsePhrase  = "";
 
       if (landedOn === 1) {
-        newSquare = landedOn + 36;
+        newSquare = landedOn + 37;
         responsePhrase = ladderSquare(roll, landedOn, newSquare);
       } else if (landedOn === 4) {
         newSquare = landedOn + 10;
@@ -46,8 +46,8 @@ const keepRollin = function(input) {
         newSquare = landedOn + 17;
         responsePhrase = ladderSquare(roll, landedOn, newSquare);
       } else if (landedOn === 62) {
-        newSquare = landedOn + 44;
-        responsePhrase = ladderSquare(roll, landedOn, newSquare);
+        newSquare = landedOn - 44;
+        responsePhrase = snakeSquare(roll, landedOn, newSquare);
       } else if (landedOn === 71) {
         newSquare = landedOn + 21;
         responsePhrase = ladderSquare(roll, landedOn, newSquare);
@@ -60,6 +60,11 @@ const keepRollin = function(input) {
       } else if (landedOn === 97) {
         newSquare = landedOn - 19;
         responsePhrase = snakeSquare(roll, landedOn, newSquare);
+      } else if (landedOn === 100) {
+        responsePhrase = `🎉 You rolled a ${roll} and landed on 100! You win!! 🎉`
+      } else if (landedOn > 100) {
+        newSquare = startingSquare;
+        responsePhrase = `You rolled a ${roll}. You must land exactly on 100. Try again.`
       } else {
         responsePhrase = `You rolled a ${roll}. You're now on square ${newSquare}.`;
       }
