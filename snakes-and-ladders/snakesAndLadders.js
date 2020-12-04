@@ -10,9 +10,10 @@ rl.question("Welcome to Snakes and Ladders. Would you like to play? (Press y or 
     console.log("Okay bye.");
     rl.close();
   } else if (answer === "y") {
+    console.log("Get ready to play! Once you land on square 100, you win!");
     let squareImOn = 0;
     const askToRoll = function() {
-      rl.question("Press 'r' then 'enter' to roll\n", (answer) => {
+      rl.question("Press 'r' then 'enter' to roll.\n", (answer) => {
         if (answer === "r") {
           let response = keepRollin(squareImOn);
           console.log(response[0]);
